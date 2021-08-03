@@ -1,4 +1,4 @@
-# Dist::Zilla::Plugin::ArchiveTar ![linux](https://github.com/uperl/Dist-Zilla-Plugin-ArchiveTar/workflows/linux/badge.svg)
+# Dist::Zilla::Plugin::ArchiveTar ![static](https://github.com/uperl/Dist-Zilla-Plugin-ArchiveTar/workflows/static/badge.svg) ![linux](https://github.com/uperl/Dist-Zilla-Plugin-ArchiveTar/workflows/linux/badge.svg)
 
 Create dist archives using  Archive::Tar
 
