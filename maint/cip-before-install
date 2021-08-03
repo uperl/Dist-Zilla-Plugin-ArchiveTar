@@ -1,0 +1,5 @@
+#!/bin/bash
+
+set -ex
+
+cip exec dzil-cpanm -n https://dist.wdlabs.com/Dist-Zilla-Plugin-ArchiveTar-0.01.tar.gz
