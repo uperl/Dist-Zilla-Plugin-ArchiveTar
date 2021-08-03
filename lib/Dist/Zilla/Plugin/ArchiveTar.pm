@@ -14,6 +14,76 @@ package Dist::Zilla::Plugin::ArchiveTar {
 
   # ABSTRACT: Create dist archives using  Archive::Tar
 
+=head1 SYNOPSIS
+
+In your C<dist.ini>
+
+ [ArchiveTar]
+
+=head1 DESCRIPTION
+
+This L<Dist::Zilla> plugin overrides the build in archive builder and uses L<Archive::Tar> only.
+Although L<Dist::Zilla> does frequently use L<Archive::Tar> itself, it is different from the built
+in version in the following ways:
+
+=over 4
+
+=item Predictable
+
+The built in behavior will sometimes use L<Archive::Tar> or L<Archive::Tar::Wrapper>.  The problem with L<Archive::Tar::Wrapper>
+is that it depends on the system implementation of tar, which in some cases can produce archives that are not readable by older
+implementations of tar.  In particular GNU tar which is typically the default on Linux systems includes unnecessary features that
+break tar on HP-UX.  (You should probably be getting off HP-UX if you are still using it in 2021 as I write this).
+
+=item Sorted by name
+
+The contents of the archive are sorted by name instead of being sorted by filename length.  While sorting by length makes for
+a pretty display when they are unpacked, I find it harder to find stuff when the content is listed.
+
+=item Additional formats
+
+This plugin supports the use of compression formats supported by L<Archive::Tar>.
+
+=back
+
+=head1 PROPERTIES
+
+=head2 format
+
+ [ArchiveTar]
+ format = tar.gz
+
+Sets the output format.  The default, most common and easiest to unpack for cpan clients is C<tar.gz>.  You should consider
+carefully before not using the default.  Supported formats:
+
+=over 4
+
+=item C<tar>
+
+=item C<tar.gz>
+
+=item C<tar.bz2>
+
+=item C<tar.xz>
+
+=back
+
+=head1 SEE ALSO
+
+=over 4
+
+=item L<Archive::Libarchive>
+
+=item L<Dist::Zilla>
+
+=item L<Dist::Zilla::Plugin::Libarchive>
+
+=item L<Dist::Zilla::Role::ArchiveBuilder>
+
+=back
+
+=cut
+
   with 'Dist::Zilla::Role::ArchiveBuilder';
 
   enum ArchiveFormat => [qw/ tar tar.gz tar.bz2 tar.xz /];
