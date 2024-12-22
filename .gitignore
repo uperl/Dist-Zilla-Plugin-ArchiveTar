@@ -2,4 +2,7 @@ Dist-Zilla-Plugin-ArchiveTar-*
 /.build/
 *.swp
 
-
+/Dist-Zilla-Plugin-ArchiveTar-*
+/.build
+*.old
+*.orig
